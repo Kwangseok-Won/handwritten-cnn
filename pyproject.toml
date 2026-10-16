@@ -1,0 +1,46 @@
+[project]
+name = "handwritten-cnn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "datasets>=5.1.0",
+  "huggingface-hub>=2.2.0",
+  "ipykernel>=7.4.0",
+  "jupyterlab>=4.6.4",
+  "torch>=2.14.1",
+  "torchvision>=0.29.1",
+]
+
+[project.scripts]
+handwritten-cnn = "handwritten_cnn:main"
+
+[dependency-groups]
+dev = [
+  "ruff>=0.17.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.1"]
+build-backend = "uv_build"
+
+[tool.ruff.lint]
+# E: Pycodestyle errors
+# F: Pyflakes
+# I: isort (Import sorting)
+# B: Flake8-bugbear (Potential bugs)
+# UP: Pyupgrade (Upgrade syntax to newer Python versions)
+# N: Pep8-naming
+# RUF: ruff specific rules
+# SIM: simplify
+# PERF: performance
+extend-select = ["E", "F", "I", "B", "UP", "N", "RUF", "SIM", "PERF"]
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu132" }
